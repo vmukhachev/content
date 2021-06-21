@@ -57,12 +57,14 @@ console.log(dateTimeFormat.format(new Date()));
 <p>Use the <code>format</code> getter function for formatting all dates in an array. Note
 	that the function is bound to the {{jsxref("Intl/DateTimeFormat", "Intl.DateTimeFormat")}}
 	from which it was obtained, so it can be passed directly to
-	{{jsxref("Array.prototype.map()")}}.</p>
+	{{jsxref("Array.prototype.map()")}}. This is considered a historical artefact, as part of
+  a convention which is no longer followed for new features, but is preserved to maintain
+  compatibility with existing programs.</p>
 
 <pre class="brush: js">var a = [new Date(2012, 08), new Date(2012, 11), new Date(2012, 03)];
 var options = { year: 'numeric', month: 'long' };
 var dateTimeFormat = new Intl.DateTimeFormat('pt-BR', options);
-var formatted = a.map(dateTimeFormat.format);
+var formatted = a.map(date => dateTimeFormat.format(date));
 console.log(formatted.join('; '));
 // → "setembro de 2012; dezembro de 2012; abril de 2012"
 </pre>
